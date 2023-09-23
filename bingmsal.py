@@ -4,6 +4,7 @@ from mojafunkcja import st_style
 from azure.storage.blob import BlobServiceClient, BlobClient
 import pandas as pd
 from streamlit_javascript import st_javascript
+import os
 
 
 st_style()
@@ -12,9 +13,8 @@ rights = ""
 # Function to fetch AAD username using JavaScript
 filename = "data.json"
 container_name = "positive-user"
-constr = "DefaultEndpointsProtocol=https;AccountName=positiveuserinfo;AccountKey=jGsj6JqKj+R5lEPG5VWX3YLo5sZswBt2Gij/KatcKkbYudB/mcrSeQzjf3NNyf8gUfgYrDkMHK8J+AStHs0mlA==;EndpointSuffix=core.windows.net"  # your connection string
-
-
+constr = os.environ.get("AZ_BLOB_API_KEY")
+st.write(constr)
 def load_data():
     try:
         blob_service_client = BlobServiceClient.from_connection_string(constr)
@@ -58,10 +58,6 @@ st.info(
 
 
 # Read data from JSON file
-
-filename = "data.json"
-container_name = "positive-user"
-constr = "DefaultEndpointsProtocol=https;AccountName=positiveuserinfo;AccountKey=jGsj6JqKj+R5lEPG5VWX3YLo5sZswBt2Gij/KatcKkbYudB/mcrSeQzjf3NNyf8gUfgYrDkMHK8J+AStHs0mlA==;EndpointSuffix=core.windows.net"  # your connection string
 data = load_data()
 
 
