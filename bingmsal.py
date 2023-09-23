@@ -1,13 +1,9 @@
 import json
 import streamlit as st
-from mojafunkcja import st_style
-from azure.storage.blob import BlobServiceClient, BlobClient
+from azure.storage.blob import BlobServiceClient
 import pandas as pd
 from streamlit_javascript import st_javascript
 import os
-
-
-st_style()
 
 rights = ""
 # Function to fetch AAD username using JavaScript

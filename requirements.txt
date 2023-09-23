@@ -1,0 +1,7 @@
+azure-core==1.29.2
+azure-functions==1.17.0
+azure-identity==1.14.0
+azure-storage-blob==12.17.0
+streamlit==1.26.0
+streamlit-javascript==0.1.5
+pandas==2.0.3
