@@ -1,0 +1,42 @@
+[
+  {
+    "name": "DEPLOYMENT_ENVIRONMENT",
+    "value": "Azure",
+    "slotSetting": false
+  },
+  {
+    "name": "GOOGLE_API_KEY",
+    "value": "AIzaSyBQGgeUYxe-nYN9fyEDs96NVKvluwNc1vM",
+    "slotSetting": false
+  },
+  {
+    "name": "GOOGLE_CSE_ID",
+    "value": "7604085e1535e4e77",
+    "slotSetting": false
+  },
+  {
+    "name": "LANGCHAIN_API_KEY",
+    "value": "ls__a3cebcb3347d4b529480259b9c22a366",
+    "slotSetting": false
+  },
+  {
+    "name": "OPENAI_API_KEY",
+    "value": "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",
+    "slotSetting": false
+  },
+  {
+    "name": "PINECONE_API_ENV",
+    "value": "us-west1-gcp",
+    "slotSetting": false
+  },
+  {
+    "name": "PINECONE_API_KEY",
+    "value": "b448748a-ad34-4de8-85d2-4843f5eaef2b",
+    "slotSetting": false
+  },
+  {
+    "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+    "value": "1",
+    "slotSetting": false
+  }
+]
