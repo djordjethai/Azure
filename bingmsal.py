@@ -10,7 +10,7 @@ rights = ""
 filename = "data.json"
 container_name = "positive-user"
 constr = os.environ.get("AZ_BLOB_API_KEY")
-st.write(constr)
+
 def load_data():
     try:
         blob_service_client = BlobServiceClient.from_connection_string(constr)
