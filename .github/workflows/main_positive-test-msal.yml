@@ -56,6 +56,9 @@ jobs:
           name: python-app
           path: .
           
+      - name: Install wkhtmltopdf
+        run: sudo apt-get install wkhtmltopdf  # Install wkhtmltopdf in the deployment step
+      
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
