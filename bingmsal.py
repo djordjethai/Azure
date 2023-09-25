@@ -85,6 +85,16 @@ if not nasao:
 
 
 html = '<meta charset="UTF-8">' + '<h1>Hello, World!</h1><p>Augmented Intelligence (AI) offers incredible ščđć for businesses. Yet, they are met with several challenges while implementing of AI supported solutions. Here, we dissect the main hurdles. Moreover, we provide the prerequisites needed to successfully integrate AI within a business context.</p>'
-pdfkit.from_string(html, 'output.pdf')
+options = {
+        'encoding': 'UTF-8',  # Set the encoding to UTF-8
+        'no-outline': None,
+        'quiet': ''
+    }
+pdf_data = pdfkit.from_string(html, cover_first=False, options=options)
+
+st.download_button(label="Download Zapisnik as .pdf",
+                                   data=pdf_data,
+                                   file_name="output.pdf",
+                                   mime='application/octet-stream')
 # # The data.json file can contain additional elements such as access rights, etc.
 # # Additionally, you can store data.json in an Azure Blob to avoid redeployment on data changes.

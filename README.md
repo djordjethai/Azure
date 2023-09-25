@@ -6,7 +6,7 @@ This repository contains Python code for a Streamlit web application that provid
 
 ## Prerequisites
 
-App only runs correctly if you are running it form an Azure App Service with enabled authentication, or have aquired a token from Azure AD in another way.
+App only runs correctly if you are running it form an Azure App Service with enabled authentication, or have aquired a token from Azure AD in another way. šđčćž
 
 Before running the application, make sure you have the following prerequisites set up:
 
