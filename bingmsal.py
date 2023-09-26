@@ -83,18 +83,21 @@ if not nasao:
     st.warning("User not found in the list")
     # The user is not authorized to use this part of the application
 
-
+st.subheader("Demo PDF generation")
 html = '<meta charset="UTF-8">' + '<h1>Hello, World!</h1><p>Augmented Intelligence (AI) offers incredible ščđć for businesses. Yet, they are met with several challenges while implementing of AI supported solutions. Here, we dissect the main hurdles. Moreover, we provide the prerequisites needed to successfully integrate AI within a business context.</p>'
 options = {
         'encoding': 'UTF-8',  # Set the encoding to UTF-8
         'no-outline': None,
         'quiet': ''
     }
-pdf_data = pdfkit.from_string(html, cover_first=False, options=options)
+try:
+    pdf_data = pdfkit.from_string(html, cover_first=False, options=options)
 
-st.download_button(label="Download Zapisnik as .pdf",
+    st.download_button(label="Download Zapisnik as .pdf",
                                    data=pdf_data,
                                    file_name="output.pdf",
                                    mime='application/octet-stream')
+except:
+    st.info("PDF not generated, please try again in 5 minutes")
 # # The data.json file can contain additional elements such as access rights, etc.
 # # Additionally, you can store data.json in an Azure Blob to avoid redeployment on data changes.
