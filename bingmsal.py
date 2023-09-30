@@ -26,6 +26,12 @@ constr = os.environ.get("AZ_BLOB_API_KEY")
 #     except FileNotFoundError:
 #         return {"user_list": []}
 
+
+st.subheader("Edit System prompta za Miljan Bot-a ")
+st.caption("Unesite tekst koji zelite da se prikaze kao sistemski prompt za Miljan Bot-a. Mozete menjati velicinu prozora sa drag dole desno. Sistemski prompt je tekst koji se prikazuje u chatu pre nego sto korisnik zapocne razgovor sa botom Korigujte tekst po zelji i pritisnite Sacuvaj")
+st.caption("Ver.30.09.23")
+
+
 def load_data():
     try:
         blob_service_client = BlobServiceClient.from_connection_string(constr)
@@ -34,13 +40,13 @@ def load_data():
         blob_client = container_client.get_blob_client(filename)
 
         streamdownloader = blob_client.download_blob()
-        data = streamdownloader.readall()
+        data = streamdownloader.readall().decode("utf-8")
         return data
     except FileNotFoundError:
         return {"Nisam pronasao fajl"}
 
 
-st.write (load_data)
+# st.write (load_data)
 
 
 # def read_aad_username():
@@ -72,7 +78,23 @@ st.write (load_data)
 
 
 # # Read data from JSON file
-# data = load_data()
+data = load_data()
+
+with st.form(key="my_form"):
+    novi_text = st.text_area("Izmenite system prompt:", data, height=300)
+    sacuvaj = st.form_submit_button("Sacuvaj")
+if sacuvaj:
+    try:
+        blob_service_client = BlobServiceClient.from_connection_string(constr)
+        container_client = blob_service_client.get_container_client(
+            container_name)
+        blob_client = container_client.get_blob_client(filename)
+        blob_client.upload_blob(novi_text, overwrite=True)
+        st.success("Uspesno sacuvano")
+    except Exception as e:
+        st.error(f"Greska pri cuvanju, pokusajte ponovo {e}")
+
+
 
 
 # with phtable.container():
@@ -119,8 +141,4 @@ st.write (load_data)
 # # The data.json file can contain additional elements such as access rights, etc.
 # # Additionally, you can store data.json in an Azure Blob to avoid redeployment on data changes.
 
-st.subheader("Edit System prompta za Miljan Bot-a ")
-st.text("Unesite tekst koji zelite da se prikaze kao sistemski prompt za Miljan Bot-a")
-st.text("Sistemski prompt je tekst koji se prikazuje u chatu pre nego sto korisnik zapocne razgovor sa botom")
-st.text("Korigujte tekst po zelji i pritisnite Sacuvaj")
 
