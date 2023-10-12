@@ -8,3 +8,4 @@ pandas==2.0.3
 pdfkit==1.0.0
 langchain==0.0.310
 langsmith==0.0.43
+O365==2.0.31
