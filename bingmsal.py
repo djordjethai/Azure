@@ -13,6 +13,29 @@ filename = "prompt_turbo_miljan.txt"
 container_name = "positive-user"
 constr = os.environ.get("AZ_BLOB_API_KEY")
 
+
+from langchain.agents.agent_toolkits import O365Toolkit
+
+
+toolkit = O365Toolkit()
+tools = toolkit.get_tools()
+
+
+from langchain.llms import OpenAI
+from langchain.agents import initialize_agent, AgentType
+
+llm = OpenAI(temperature=0)
+agent = initialize_agent(
+    tools=toolkit.get_tools(),
+    llm=llm,
+    verbose=False,
+    agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+)
+
+agent.run(
+    "Create an email draft for me to edit explaining that i am currently in Bangkok. Under no circumstances may you send the message, however."
+)
+st.write("gotovo")
 # def load_data():
 #     try:
 #         blob_service_client = BlobServiceClient.from_connection_string(constr)
