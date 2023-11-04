@@ -18,8 +18,9 @@ from langchain.agents.agent_toolkits import O365Toolkit
 
 
 toolkit = O365Toolkit()
+st.write(toolkit.account)
 tools = toolkit.get_tools()
-
+st.write(tools)
 
 from langchain.llms import OpenAI
 from langchain.agents import initialize_agent, AgentType
@@ -33,7 +34,7 @@ agent = initialize_agent(
 )
 
 agent.run(
-    "Create an email draft for me to edit explaining that i am currently in Bangkok. Under no circumstances may you send the message, however."
+     "Create an email draft for me to edit explaining that i am currently in Bangkok. Under no circumstances may you send the message, however."
 )
 st.write("gotovo")
 # def load_data():
